@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Small Business Landing Page</title>
-    <style>
+<style>
         /* Basic CSS for the layout and tagline emphasis */
         body {
             font-family: Arial, sans-serif;
@@ -25,6 +19,8 @@
             color: #007bff; /* Highlight the rotating word with a brand color */
             transition: opacity 0.5s ease-in-out; /* Smooth transition for the word */
             display: inline-block;
+            /* FIX: Prevents text shifting by fixing the container width */
+            min-width: 170px; 
         }
         .video-section {
             padding: 40px 20px;
@@ -58,58 +54,3 @@
             font-weight: bold;
         }
     </style>
-</head>
-<body>
-
-    <header class="header">
-        <div class="tagline-container">
-            The fastest way to grade <span id="rotating-word"></span>!
-        </div>
-    </header>
-
-    <section class="video-section">
-        <h2>Quick Demo of the Tool</h2>
-        <div class="video-wrapper">
-            <iframe width="100%" height="100%" 
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=7Y0S4kI4yJ-F5q-k" 
-                    title="Placeholder Demo Video" frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </section>
-
-    <section class="contact-section">
-        <h2>Ready to get started?</h2>
-        <p>Contact us today for a free trial or more information.</p>
-        <p>Email: <a href="mailto:info@placeholder-business.com">info@placeholder-business.com</a></p>
-    </section>
-
-    <script>
-        // JavaScript for the rotating tagline effect
-        const words = ["exams", "homework", "quizzes"]; // The words to cycle
-        let currentWordIndex = 0;
-        const wordElement = document.getElementById('rotating-word');
-        const intervalTime = 2000; // Time in milliseconds (2 seconds)
-
-        function rotateWord() {
-            // Start fade out (to make the change less jarring)
-            wordElement.style.opacity = 0;
-
-            setTimeout(() => {
-                // Change the word after it has faded out
-                currentWordIndex = (currentWordIndex + 1) % words.length;
-                wordElement.textContent = words[currentWordIndex];
-                
-                // Fade back in
-                wordElement.style.opacity = 1;
-            }, 500); // Wait 500ms (half a second) for the fade-out transition
-        }
-
-        // Initialize with the first word
-        wordElement.textContent = words[currentWordIndex];
-
-        // Set the interval to call the rotation function
-        setInterval(rotateWord, intervalTime);
-    </script>
-
-</body>
-</html>
