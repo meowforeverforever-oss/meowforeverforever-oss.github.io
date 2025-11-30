@@ -3,51 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Small Business Landing Page</title>
+    <title>Small Business Landing Page - Pure CSS</title>
     <style>
-        /* Basic CSS for the layout and tagline emphasis */
+        /* BRAND COLORS:
+            #2596be (Primary Deep Cyan-Blue)
+            #25be96 (Accent 1 Vivid Teal)
+            #2563be (Accent 2 Royal Blue - Darker)
+            #F0F0F0 (Neutral Light Gray)
+        */
+
+        /* Base Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             text-align: center;
             color: #333;
         }
-        .header {
-            padding: 80px 20px 40px; /* Reduced bottom padding to bring features closer */
-            background-color: #f4f4f4;
-        }
-        .tagline-container {
-            font-size: 2.5em; /* Big tag line */
-            font-weight: bold;
-            margin-bottom: 30px; /* Space between tagline and features */
-        }
-        #rotating-word {
-            color: #007bff; /* Highlight the rotating word with a brand color */
-            transition: opacity 0.5s ease-in-out; /* Smooth transition for the word */
-            display: inline-block;
-            /* FIX: Prevents text shifting by fixing the container width */
-            min-width: 170px; 
-        }
-        .features-section {
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto 50px auto; /* Center the features and add space below */
-            text-align: left; /* Align list items to the left */
-        }
-        .features-section ul {
-            list-style-type: none; /* Remove default bullet points */
-            padding: 0;
-        }
-        .features-section li {
-            padding: 8px 0;
-            border-bottom: 1px dashed #ddd; /* Subtle separator */
-        }
-        .features-section li:last-child {
-            border-bottom: none;
+        h2 {
+            color: #2596be; /* Primary color for main headers */
+            margin-bottom: 25px;
         }
 
-        /* Video and Contact Section styles remain the same */
+        /* --- 1. Tagline/Header Section --- */
+        .header {
+            padding: 80px 20px 40px;
+            background-color: #F0F0F0; /* Neutral Light Gray */
+        }
+        .tagline-container {
+            font-size: 2.8em; 
+            font-weight: bold;
+            margin-bottom: 30px; 
+            display: flex; /* Use flexbox to easily center the line */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* CSS STACKING METHOD IMPLEMENTATION */
+        .word-stack-wrapper {
+            display: inline-block;
+            height: 1.2em; /* Must be slightly taller than the font size */
+            overflow: hidden; /* Hides the words not currently showing */
+            min-width: 170px; /* FIX: Prevents text shifting */
+            vertical-align: middle;
+            text-align: left; /* Align words inside the stack */
+        }
+        .word-stack {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            color: #2596be; /* Primary Deep Cyan-Blue for rotating word */
+            animation: word-rotate 6s infinite; /* 3 words * 2 seconds per word */
+        }
+        .word-stack li {
+            line-height: 1.2em; /* Matches wrapper height for perfect alignment */
+            padding: 0;
+            margin: 0;
+            font-weight: 800;
+        }
+
+        /* The keyframes animation for vertical rotation */
+        @keyframes word-rotate {
+            0%, 15% { transform: translateY(0); } /* Show "exams" */
+            30%, 45% { transform: translateY(-1.2em); } /* Move to "homework" */
+            60%, 75% { transform: translateY(-2.4em); } /* Move to "quizzes" */
+            90%, 100% { transform: translateY(-3.6em); } /* Briefly move off-screen before looping */
+        }
+
+        /* --- 2. Features Section --- */
+        .features-section {
+            padding: 40px 20px;
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: left;
+            background-color: #25be961a; /* Very light tint of Accent 1 */
+            border-radius: 8px;
+            margin-bottom: 50px;
+        }
+        .features-section h3 {
+             color: #2596be;
+             margin-top: 0;
+        }
+        .features-section ul {
+            list-style-type: '👉 '; /* Custom bullet point style */
+            padding-left: 20px;
+        }
+        .features-section li {
+            padding: 10px 0;
+        }
+
+        /* --- 3. Video Section --- */
         .video-section {
             padding: 40px 20px;
             background-color: #fff;
@@ -55,17 +100,20 @@
         .video-wrapper {
             max-width: 800px;
             margin: 0 auto;
-            aspect-ratio: 16 / 9;
-            background-color: #eee;
+            aspect-ratio: 16 / 9; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
+
+        /* --- 4. Contact Section --- */
         .contact-section {
             padding: 60px 20px;
-            background-color: #333;
+            background-color: #2563be; /* Accent 2 Royal Blue */
             color: white;
+            margin-top: 50px;
         }
         .contact-section a {
-            color: #007bff;
-            text-decoration: none;
+            color: #25be96; /* Accent 1 Vivid Teal for contrast */
+            text-decoration: underline;
             font-weight: bold;
         }
     </style>
@@ -74,12 +122,20 @@
 
     <header class="header">
         <div class="tagline-container">
-            The fastest way to grade <span id="rotating-word"></span>!
+            The fastest way to grade 
+            <div class="word-stack-wrapper">
+                <ul class="word-stack">
+                    <li>exams</li>
+                    <li>homework</li>
+                    <li>quizzes</li>
+                    <li>exams</li> </ul>
+            </div>
+            !
         </div>
     </header>
 
     <section class="features-section">
-        <h3>✨ Features</h3>
+        <h3>✨ Core Features of the Tool</h3>
         <ul>
             <li>Instructors can **upload scans** of student work (exams, homework, etc).</li>
             <li>Students can **upload images** of their work (great for mobile/remote).</li>
@@ -87,8 +143,6 @@
             <li>**Fast and efficient grading** using keyboard shortcuts.</li>
         </ul>
     </section>
-
-    <hr>
 
     <section class="video-section">
         <h2>▶️ Quick Demo of the Tool</h2>
@@ -100,41 +154,11 @@
         </div>
     </section>
 
-    <hr>
-
     <section class="contact-section">
         <h2>📧 Ready to get started?</h2>
         <p>Contact us today for a free trial or more information.</p>
         <p>Email: <a href="mailto:info@placeholder-business.com">info@placeholder-business.com</a></p>
     </section>
-
-    <script>
-        // JavaScript for the rotating tagline effect
-        const words = ["exams", "homework", "quizzes"]; // The words to cycle
-        let currentWordIndex = 0;
-        const wordElement = document.getElementById('rotating-word');
-        const intervalTime = 2000; // Time in milliseconds (2 seconds)
-
-        function rotateWord() {
-            // Start fade out (to make the change less jarring)
-            wordElement.style.opacity = 0;
-
-            setTimeout(() => {
-                // Change the word after it has faded out
-                currentWordIndex = (currentWordIndex + 1) % words.length;
-                wordElement.textContent = words[currentWordIndex];
-                
-                // Fade back in
-                wordElement.style.opacity = 1;
-            }, 500); // Wait 500ms (half a second) for the fade-out transition
-        }
-
-        // Initialize with the first word
-        wordElement.textContent = words[currentWordIndex];
-
-        // Set the interval to call the rotation function
-        setInterval(rotateWord, intervalTime);
-    </script>
 
 </body>
 </html>
