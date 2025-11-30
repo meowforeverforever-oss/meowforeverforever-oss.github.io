@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nimbler Solutions / Turbograder</title>
+    <style>
+        /* BRAND COLORS:
+            #2596be (Primary Deep Cyan-Blue)
+            #be4725 (Accent Burnt Orange)
+            #FAFAFA (Neutral Light Off-White)
+            #333333 (Neutral Dark Charcoal Gray)
+        */
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #FAFAFA;
+            color: #333333;
+        }
+        h2 {
+            color: #2596be;
+            margin-bottom: 25px;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #EEEEEE;
+            margin: 40px auto;
+            width: 80%;
+        }
+
+        /* --- 1. Tagline/Header Section (Desktop Flex) --- */
+        .header {
+            padding: 20px 20px 40px;
+            background-color: #FAFAFA;
+            display: flex;
+            flex-direction: column;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .logo-placeholder {
+            width: 270px;
+            height: auto;
+            flex-shrink: 0;
+        }
+        .tagline-container {
+            font-size: 2.2em;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            margin-right: 270px;
+        }
+
+        /* CSS STACKING METHOD IMPLEMENTATION */
+        .word-stack-wrapper {
+            display: inline-block;
+            height: 1.3em; 
+            overflow: hidden; 
+            min-width: 180px; /* Fix for "homework" truncation */
+            vertical-align: -10%; 
+            text-align: left; 
+        }
+        .word-stack {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            color: #2596be;
+            animation: word-rotate 6s infinite;
+        }
+        .word-stack li {
+            line-height: 1.3em;
+            padding: 0;
+            margin: 0;
+            font-weight: 800;
+        }
+        @keyframes word-rotate {
+            0%, 15% { transform: translateY(0); }
+            30%, 45% { transform: translateY(-1.3em); } 
+            60%, 75% { transform: translateY(-2.6em); } 
+            90%, 100% { transform: translateY(-3.9em); } 
+        }
+
+        /* --- 2. Features Section --- */
+        .features-section {
+            padding: 40px 20px;
+            max-width: 650px;
+            margin: 20px auto 50px auto;
+            text-align: left;
+            background-color: #FAFAFA;
+            border-radius: 8px;
+            border: 1px solid #EEEEEE;
+        }
+        .features-section h3 {
+             color: #2596be;
+             margin-top: 0;
+        }
+        .features-section ul {
+            list-style-type: '👉 ';
+            padding-left: 20px;
+        }
+        .features-section li {
+            padding: 10px 0;
+        }
+
+        /* --- 3. Video Section --- */
+        .video-section {
+            padding: 40px 20px;
+            background-color: #FAFAFA;
+        }
+        .video-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            aspect-ratio: 16 / 9;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* --- 4. Pricing Section (NEW) --- */
+        .pricing-section {
+            padding: 40px 20px;
+            background-color: #FAFAFA;
+        }
+        .pricing-section h2 {
+            margin-bottom: 10px;
+        }
+        .pricing-tiers {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .tier-card {
+            background-color: #fff;
+            border: 1px solid #2596be;
+            border-radius: 8px;
+            padding: 25px 30px;
+            width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            font-weight: bold;
+        }
+        .tier-card.featured {
+            background-color: #2596be;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* --- 5. Contact Section (High Impact CTA) --- */
+        .contact-section {
+            padding: 60px 20px;
+            background-color: #be4725;
+            color: white;
+            margin-top: 50px;
+        }
+        .contact-section h2 {
+            color: white;
+        }
+        .contact-section a {
+            color: #FFFFFF;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        /* ================================================= */
+        /* === MOBILE STYLES: Applied when screen is < 800px === */
+        /* ================================================= */
+        @media (max-width: 800px) {
+            .header-content {
+                flex-direction: column;
+                padding-top: 20px;
+            }
+            .logo-placeholder {
+                width: 200px;
+                margin-bottom: 15px;
+            }
+            .tagline-container {
+                margin-right: 0;
+                font-size: 1.8em;
+                justify-content: center;
+                width: 100%;
+            }
+            .features-section {
+                padding: 20px;
+            }
+            .pricing-tiers {
+                flex-direction: column;
+                align-items: center;
+            }
+            .tier-card {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-placeholder">
+                <svg viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#2596be;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#1e7a9c;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.2)"/>
+                        </filter>
+                    </defs>
+                    <circle cx="40" cy="40" r="30" fill="url(#logoGradient)" filter="url(#shadow)"/>
+                    <g opacity="0.7">
+                        <line x1="15" y1="35" x2="25" y2="35" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="18" y1="40" x2="28" y2="40" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="15" y1="45" x2="25" y2="45" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+                    </g>
+                    <path d="M32 38 L38 44 L50 30" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <text x="85" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="url(#logoGradient)">
+                        Turbo
+                    </text>
+                    <text x="85" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="300" fill="#2596be">
+                        Grader
+                    </text>
+                </svg>
+            </div>
+            <div class="tagline-container">
+                The fastest way to grade&nbsp;
+                <div class="word-stack-wrapper">
+                    <ul class="word-stack">
+                        <li>exams</li>
+                        <li>homework</li>
+                        <li>quizzes</li>
+                        <li>exams</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="features-section">
+        <h3>Core Features of the Tool</h3>
+        <ul>
+            <li>Instructors can **upload scans** of student work (exams, homework, etc).</li>
+            <li>Students can **upload images** of their work (great for mobile/remote).</li>
+            <li>Instructors can upload scans of **bubble sheets/Scantron** for automated grading.</li>
+            <li>**Fast and efficient grading** using keyboard shortcuts.</li>
+        </ul>
+    </section>
+
+    <section class="video-section">
+        <h2>Quick Demo of the Tool</h2>
+        <div class="video-wrapper">
+            <iframe width="100%" height="100%" 
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=7Y0S4kI4yJ-F5q-k" 
+                    title="Placeholder Demo Video" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="pricing-section">
+        <h2>Pricing Tiers</h2>
+        <p>We offer competitive pricing depending on your need. Contact us for a custom quote.</p>
+        <div class="pricing-tiers">
+            <div class="tier-card">Starter/Pilot</div>
+            <div class="tier-card featured">Departmental</div>
+            <div class="tier-card">College/Campus</div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="contact-section">
+        <h2>Ready to get started?</h2>
+        <p>Contact us today for a free trial or more information.</p>
+        <p>Email: <a href="mailto:info@placeholder-business.com">info@placeholder-business.com</a></p>
+    </section>
+
+</body>
+</html>
