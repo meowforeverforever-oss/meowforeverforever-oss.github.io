@@ -67,7 +67,7 @@
             display: inline-block;
             height: 1.3em; 
             overflow: hidden; 
-            min-width: 180px; /* Fix for "homework" truncation */
+            min-width: 190px;
             vertical-align: -10%; 
             text-align: left; 
         }
@@ -95,7 +95,8 @@
         .features-section {
             padding: 40px 20px;
             max-width: 650px;
-            margin: 20px auto 50px auto;
+            /* REDUCED BOTTOM MARGIN FROM 50px to 20px */
+            margin: 20px auto 20px auto; 
             text-align: left;
             background-color: #FAFAFA;
             border-radius: 8px;
@@ -115,7 +116,8 @@
 
         /* --- 3. Video Section --- */
         .video-section {
-            padding: 40px 20px;
+            /* REDUCED TOP PADDING from 40px to 20px */
+            padding: 20px 20px; 
             background-color: #FAFAFA;
         }
         .video-wrapper {
@@ -125,7 +127,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         
-        /* --- 4. Pricing Section (NEW) --- */
+        /* --- 4. Pricing Section --- */
         .pricing-section {
             padding: 40px 20px;
             background-color: #FAFAFA;
@@ -191,6 +193,10 @@
             }
             .features-section {
                 padding: 20px;
+                margin-bottom: 20px; /* Ensure margin is reduced on mobile too */
+            }
+            .video-section {
+                padding: 20px 20px; /* Ensure padding is reduced on mobile too */
             }
             .pricing-tiers {
                 flex-direction: column;
