@@ -12,7 +12,7 @@
             #333333 (Neutral Dark Charcoal Gray)
         */
 
-        /* Base Styles (Desktop/Default) */
+        /* Base Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -42,7 +42,7 @@
             width: 100%;
         }
         .logo-placeholder {
-            width: 270px; /* Desktop Size */
+            width: 270px;
             height: auto;
             flex-shrink: 0;
         }
@@ -53,25 +53,17 @@
             justify-content: center;
             align-items: center;
             flex-grow: 1;
-            margin-right: 270px; /* Offset to center tagline next to logo */
-        }
-        .features-section {
-            padding: 40px 20px;
-            max-width: 650px;
-            margin: 20px auto 50px auto;
-            text-align: left;
-            background-color: #FAFAFA;
-            border-radius: 8px;
-            border: 1px solid #EEEEEE;
+            margin-right: 270px;
         }
 
-        /* CSS STACKING METHOD IMPLEMENTATION (No change needed here for responsiveness) */
+        /* CSS STACKING METHOD IMPLEMENTATION */
         .word-stack-wrapper {
             display: inline-block;
-            height: 1.2em;
+            height: 1.3em; /* Taller viewport to prevent clipping (1.3em) */
             overflow: hidden;
             min-width: 150px;
-            vertical-align: middle;
+            /* FIX 1: Adjust vertical alignment */
+            vertical-align: -10%; 
             text-align: left;
         }
         .word-stack {
@@ -82,25 +74,56 @@
             animation: word-rotate 6s infinite;
         }
         .word-stack li {
-            line-height: 1.2em;
+            line-height: 1.3em; /* Must match wrapper height (1.3em) */
             padding: 0;
             margin: 0;
             font-weight: 800;
         }
+
+        /* The keyframes animation for vertical rotation */
         @keyframes word-rotate {
+            /* All translateY values must be updated to use 1.3em as the unit step */
             0%, 15% { transform: translateY(0); }
-            30%, 45% { transform: translateY(-1.3em); }
-            60%, 75% { transform: translateY(-2.6em); }
-            90%, 100% { transform: translateY(-3.9em); }
+            30%, 45% { transform: translateY(-1.3em); } 
+            60%, 75% { transform: translateY(-2.6em); } 
+            90%, 100% { transform: translateY(-3.9em); } /* 3 * 1.3em */
         }
 
-        /* --- Video and Contact Sections (No change needed) --- */
+        /* --- 2. Features Section --- */
+        .features-section {
+            padding: 40px 20px;
+            max-width: 650px;
+            margin: 20px auto 50px auto;
+            text-align: left;
+            background-color: #FAFAFA;
+            border-radius: 8px;
+            border: 1px solid #EEEEEE;
+        }
+        .features-section h3 {
+             color: #2596be;
+             margin-top: 0;
+        }
+        .features-section ul {
+            list-style-type: '👉 ';
+            padding-left: 20px;
+        }
+        .features-section li {
+            padding: 10px 0;
+        }
+
+        /* --- 3. Video Section --- */
+        .video-section {
+            padding: 40px 20px;
+            background-color: #FAFAFA;
+        }
         .video-wrapper {
             max-width: 800px;
             margin: 0 auto;
             aspect-ratio: 16 / 9;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
+
+        /* --- 4. Contact Section (High Impact CTA) --- */
         .contact-section {
             padding: 60px 20px;
             background-color: #be4725;
@@ -112,39 +135,27 @@
             text-decoration: underline;
             font-weight: bold;
         }
-        
+
         /* ================================================= */
         /* === MOBILE STYLES: Applied when screen is < 800px === */
         /* ================================================= */
         @media (max-width: 800px) {
-            
-            /* 1. Header Layout */
             .header-content {
-                /* Stack elements vertically (logo on top, tagline below) */
                 flex-direction: column;
-                padding-top: 20px; /* Add some space at the top */
+                padding-top: 20px;
             }
-
-            /* 2. Logo Size */
             .logo-placeholder {
-                width: 200px; /* Shrink logo for mobile screens */
-                margin-bottom: 15px; /* Add space below logo */
+                width: 200px;
+                margin-bottom: 15px;
             }
-
-            /* 3. Tagline Centering */
             .tagline-container {
-                /* Remove the centering offset */
-                margin-right: 0; 
-                /* Increase font size slightly to feel bigger on mobile */
-                font-size: 1.8em; 
-                /* Center the tagline wrapper on its own line */
-                justify-content: center; 
+                margin-right: 0;
+                font-size: 1.8em;
+                justify-content: center;
                 width: 100%;
             }
-
-            /* 4. Features Padding */
             .features-section {
-                padding: 20px; /* Reduce padding on mobile */
+                padding: 20px;
             }
         }
     </style>
