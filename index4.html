@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Small Business Landing Page - Pure CSS</title>
-    <style>
+<style>
         /* BRAND COLORS:
             #2596be (Primary Deep Cyan-Blue)
             #25be96 (Accent 1 Vivid Teal)
@@ -36,33 +30,34 @@
             display: flex;
             align-items: center; 
             justify-content: space-between; 
-            max-width: 1200px; 
+            /* FIX 1: INCREASE MAX-WIDTH */
+            max-width: 1400px; 
             margin: 0 auto; 
             width: 100%;
         }
         .logo-placeholder {
-            /* 50% LARGER: 180px * 1.5 = 270px */
             width: 270px; 
             height: auto;
             flex-shrink: 0; 
         }
         .tagline-container {
-            font-size: 2.8em; 
+            /* FIX 2: DECREASE FONT SIZE */
+            font-size: 2.2em; 
             font-weight: bold;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-grow: 1; 
-            /* Margin offset must match logo width for visual centering */
             margin-right: 270px; 
         }
 
         /* CSS STACKING METHOD IMPLEMENTATION */
         .word-stack-wrapper {
             display: inline-block;
-            height: 1.2em;
+            /* Update line-height/height to reflect new font-size */
+            height: 1.2em; 
             overflow: hidden; 
-            min-width: 170px;
+            min-width: 150px; /* Slightly adjusted to accommodate smaller font */
             vertical-align: middle;
             text-align: left; 
         }
@@ -134,82 +129,3 @@
             font-weight: bold;
         }
     </style>
-</head>
-<body>
-
-    <header class="header">
-        <div class="header-content">
-            <div class="logo-placeholder">
-                <svg viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#2596be;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#1e7a9c;stop-opacity:1" />
-                        </linearGradient>
-                       
-                        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                            <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.2)"/>
-                        </filter>
-                    </defs>
-                   
-                    <circle cx="40" cy="40" r="30" fill="url(#logoGradient)" filter="url(#shadow)"/>
-                   
-                    <g opacity="0.7">
-                        <line x1="15" y1="35" x2="25" y2="35" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="18" y1="40" x2="28" y2="40" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="15" y1="45" x2="25" y2="45" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
-                    </g>
-                   
-                    <path d="M32 38 L38 44 L50 30" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                   
-                    <text x="85" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="url(#logoGradient)">
-                        Turbo
-                    </text>
-                   
-                    <text x="85" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="300" fill="#2596be">
-                        Grader
-                    </text>
-                </svg>
-            </div>
-            <div class="tagline-container">
-                The fastest way to grade&nbsp;
-                <div class="word-stack-wrapper">
-                    <ul class="word-stack">
-                        <li>exams</li>
-                        <li>homework</li>
-                        <li>quizzes</li>
-                        <li>exams</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <section class="features-section">
-        <h3> Core Features of the Tool</h3>
-        <ul>
-            <li>Instructors can **upload scans** of student work (exams, homework, etc).</li>
-            <li>Students can **upload images** of their work (great for mobile/remote).</li>
-            <li>Instructors can upload scans of **bubble sheets/Scantron** for automated grading.</li>
-            <li>**Fast and efficient grading** using keyboard shortcuts.</li>
-        </ul>
-    </section>
-
-    <section class="video-section">
-        <h2> Quick Demo of the Tool</h2>
-        <div class="video-wrapper">
-            <iframe width="100%" height="100%" 
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=7Y0S4kI4yJ-F5q-k" 
-                    title="Placeholder Demo Video" frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </section>
-
-    <section class="contact-section">
-        <h2>Ready to get started?</h2>
-        <p>Contact us today for a free trial or more information.</p>
-        <p>Email: <a href="mailto:info@placeholder-business.com">info@placeholder-business.com</a></p>
-    </section>
-
-</body>
-</html>
